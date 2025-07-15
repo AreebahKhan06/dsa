@@ -1,0 +1,41 @@
+// LeetCode Problem 328
+// Difficulty: Medium
+// Topic: LinkedList
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode oddEvenList(ListNode head) {
+        
+        if(head == null || head.next == null){ //if head sized 0 or head size 1 simply return whatever is given
+            return head;
+        }
+        ListNode odd = head;  //odd staring from 1st node (0th index - in general)
+        ListNode even = head.next; // even starting from 2nd node (1st index)
+        ListNode evenHead = head.next;  // keep track of even's head so that at the end you can link it with last odd's node
+
+        while(even !=null && even.next!=null){   //even will always be one step ahead of odd 
+            odd.next = odd.next.next;   //odd.next.next will point to odd node 
+            even.next = even.next.next;  // even.next.next will point to even node so present even node's next should be next's next
+            
+            odd = odd.next;  // move odd (odd.next points to odd.next.next)
+            even = even.next; //move even (even.next points to even.next.next)
+        }
+        
+        odd.next = evenHead;  //the last odd element should point to first even node that is evenHead as stored initially
+
+        return head;  // the head will remain the same as it is in the correct position 
+
+        
+    }
+}
