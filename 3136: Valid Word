@@ -1,0 +1,32 @@
+// LeetCode Problem 3136
+
+
+class Solution {
+    public boolean isValid(String word) {
+
+        if(word.length()<3){
+            return false;
+        }
+        boolean vowel=false;
+        boolean consonant = false;
+
+        for(char c : word.toCharArray()){
+            if(Character.isLetter(c)){
+                c=Character.toLowerCase(c);
+
+                if(c=='a' || c=='e' || c=='i' || c=='o' || c=='u'){
+                    vowel=true;
+                }
+                else{
+                    consonant=true;
+                }
+            }else if(!Character.isDigit(c)){
+                return false;
+            }
+        }
+        return vowel && consonant;
+
+        
+        
+    }
+}
