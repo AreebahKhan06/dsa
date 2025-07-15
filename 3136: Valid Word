@@ -1,4 +1,8 @@
 // LeetCode Problem 3136
+// Difficulty: Easy
+// Topic : Strings
+// Time Complexity: O(n)
+// Space Complexity: O(1)
 
 
 class Solution {
@@ -7,26 +11,28 @@ class Solution {
         if(word.length()<3){
             return false;
         }
-        boolean vowel=false;
-        boolean consonant = false;
+        boolean vow=false;
+        boolean con = false;
 
-        for(char c : word.toCharArray()){
-            if(Character.isLetter(c)){
-                c=Character.toLowerCase(c);
+        for(int i=0;i<word.length(); i++){
+            char c =Character.toLowerCase( word.charAt(i));
+             if(Character.isLetter(c)){
 
                 if(c=='a' || c=='e' || c=='i' || c=='o' || c=='u'){
-                    vowel=true;
+                    vow=true;
                 }
                 else{
-                    consonant=true;
+                    con=true;
                 }
-            }else if(!Character.isDigit(c)){
+            } else if(!Character.isDigit(c)){
                 return false;
-            }
+                }   
         }
-        return vowel && consonant;
+            return vow && con;
+
+    }
 
         
         
-    }
+    
 }
