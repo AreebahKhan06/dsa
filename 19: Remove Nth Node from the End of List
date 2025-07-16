@@ -29,7 +29,7 @@ class Solution {
         }
         
         while(fast.next!=null){   // move the fast till the end of list Note: fast is at the previous of the required node
-        slow = slow.next;  // move slow and fast simultaneously. This will move slow pointer to the required node 
+        slow = slow.next;  // move slow and fast simultaneously. This will move slow pointer to the previous of the required node 
         fast= fast.next;
         }
         ListNode delNode = slow.next;   // store the node that is after the required node so that you can link it's previous node to that
