@@ -1,0 +1,36 @@
+LeetCode 2095
+Difficulty: Medium
+Topics: LinkedLists, Two Pointers
+Time Complexity: O(N)
+Space Complexity: (1)
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode deleteMiddle(ListNode head) {
+        if(head == null || head.next== null ){
+            return null;
+        }
+        ListNode fast = head;
+        ListNode slow = head;
+
+        fast=fast.next.next;  // move only fast first skip slow by one step this makes the slow to reach the node at the back of the required node
+
+        while(fast!=null && fast.next!=null ){
+            slow= slow.next;
+            fast= fast.next.next;
+    }
+    slow.next= slow.next.next;
+    return head;
+
+        
+    }
+}
