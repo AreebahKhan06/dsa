@@ -1,0 +1,48 @@
+// LeetCode 19: Remove Nth Node from the End of List
+// Topics: LinkedList, Two Pointers
+// Difficulty : Medium
+// Time Complexity: O(N)
+// Space Complexity: O(1)
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+
+        ListNode fast = head;
+        ListNode slow = head;
+
+        for(int i=0;i<n;i++){ // take the fast pointer to the previous of the required node
+            fast=fast.next;
+
+        }
+        if(fast==null){ // if fast reaches null that means the head has to be deleted 
+            return head.next;
+        }
+        
+        while(fast.next!=null){   // move the fast till the end of list Note: fast is at the previous of the required node
+        slow = slow.next;  // move slow and fast simultaneously. This will move slow pointer to the required node 
+        fast= fast.next;
+        }
+        ListNode delNode = slow.next;   // store the node that is after the required node so that you can link it's previous node to that
+        slow.next=slow.next.next;   // point the previous of the required node to its next
+
+        return head;  // return the head
+
+
+
+
+
+    
+
+        
+    }
+}
